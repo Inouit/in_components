@@ -1,0 +1,21 @@
+<div class="alert-slide">
+  <div class="prev">prev</div>
+  <div class="count"><span class="badge"><%= items.length %></span></div>
+  <div class="next">next</div>
+</div><!--
+--><div class="alert-list">
+  <% _.each(items, function(item) { %>
+    <a class="alert-item <% if (item.media && item.media.path) {%>with-image<%}%>"
+      data-id="<%= item.id %>"
+      href="<%= item.url %>"><!--
+      <% if (item.media) { %>
+    --><div class="item-image">
+        <img src="<%= item.media.path %>" alt="<%= item.media.alt %>">
+      </div><!--
+      <% } %>
+      --><div class="item-content">
+        <%= item.content %>
+      </div>
+    </a>
+  <% }); %>
+</div>

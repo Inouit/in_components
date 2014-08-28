@@ -1,0 +1,14 @@
+<div class="slide-list"><!--
+  <% _.each(items, function(item) { %>
+    --><div class="slide-item" data-id="<%= item.id %>" href="<%= item.url %>" >
+      <div class="item-content"><%= item.content %></div>
+      <% if(item.media.path){ %>
+        <img src="<%= item.media.path %>" alt="<%= item.media.alt %>">
+      <% } %>
+    </div><!--
+  <% }); %>
+--></div>
+<div class="slide-controls">
+  <div class="prev">prev</div>
+  <div class="next">next</div>
+</div>

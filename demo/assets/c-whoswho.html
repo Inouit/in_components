@@ -1,0 +1,8 @@
+<% _.each(persons, function(person) { %>
+  <a class="whoswho-item" data-id="<%= person.id %>" href="<%= person.url %>">
+    <p class="item-name"><%= person.name %></p>
+    <% if(person.media.path){ %>
+      <img src="<%= person.media.path %>" alt="<%= person.media.alt %>">
+    <% } %>
+  </a>
+<% }); %>

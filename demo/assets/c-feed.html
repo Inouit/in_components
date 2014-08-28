@@ -1,0 +1,17 @@
+<% _.each(items, function(item) { %>
+  <a class="feed-item <% if (item.media && item.media.path) {%>with-image<%}%>"
+    <% if (item.category) {%>
+    data-category="<%= item.category %>"
+    <%}%>
+    data-id="<%= item.id %>"
+    href="<%= item.url %>"><!--
+    <% if (item.media) { %>
+  --><div class="item-image">
+      <img src="<%= item.media.path %>" alt="<%= item.media.alt %>">
+    </div><!--
+    <% } %>
+    --><div class="item-content">
+      <%= item.content %>
+    </div>
+  </a>
+<% }); %>

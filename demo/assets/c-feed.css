@@ -1,0 +1,3 @@
+.feed-item:nth-child(odd) { background-color: #ddd; }
+.feed-item.with-image .item-image { display: inline-block; width: 20%;  }
+.feed-item.with-image .item-content { display: inline-block; width: 80%; }

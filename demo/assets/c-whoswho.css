@@ -1,0 +1,4 @@
+.whoswho-item { display: inline-block; }
+.whoswho-item img { display: block; }
+.whoswho-item .item-name{ display: none; position: absolute; background: #fff; }
+.whoswho-item:hover .item-name{ display: block; }

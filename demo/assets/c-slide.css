@@ -1,0 +1,10 @@
+.cSlide { position: relative; height: 500px; overflow: hidden; }
+.slide-list { position: relative; transition: .5s 0s ease-in; }
+.slide-item { position: relative; display: inline-block; }
+.slide-item img { display: block; position: absolute; top: 0; right: 0; bottom: 0; left: 0; margin: auto; }
+.slide-item .item-content{ display: none; position: absolute; background: #fff; }
+.slide-item:hover .item-content{ display: block; }
+.slide-controls .prev,
+.slide-controls .next { position: absolute; }
+.slide-controls .prev { top: 50%; left: 0; }
+.slide-controls .next { top: 50%; right: 0; }

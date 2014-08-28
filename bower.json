@@ -1,0 +1,15 @@
+{
+  "name": "in-components",
+  "description": "Manages javascript based components",
+  "version": "0.0.1",
+  "main": "in-components.min.js",
+  "ignore": [
+    ".gitignore",
+    "package.json",
+    "gruntfile.coffee",
+    "tasks/",
+    "src/",
+    "node_modules",
+    "bower_components"
+  ]
+}

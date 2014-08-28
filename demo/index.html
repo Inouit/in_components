@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Components</title>
+  <script src="/in-components.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.0.min.js"></script></head>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min.js"></script></head>
+  <style>
+    .component { margin: 20px; border: 3px solid #ccc; max-height: 350px; overflow: auto; }
+    .feed-item { display: block; padding: 10px 10px;  }
+    .feed-item:nth-child(odd) { background-color: #ddd; }
+    .feed-item.with-image .item-image { display: inline-block; width: 15%;  }
+    .feed-item.with-image .item-content { display: inline-block; width: 80%; }
+  </style>
+<body>
+
+  <div class="alert">
+    <h2>Notifications</h2>
+    <div id="c-alert" class="component"
+      data-component="cAlert"
+      data-script="/components/c-alert.js"
+      data-css="/demo/assets/c-alert.css"
+      data-data="/demo/assets/c-alert.json"
+      data-template="/demo/assets/c-alert.html">
+    </div>
+  </div>
+
+  <div class="feed">
+    <h2>Activités</h2>
+    <div id="c-feed-filtered" class="component"
+      data-component="cFeed"
+      data-script="/components/c-feed.js"
+      data-css="/demo/assets/c-feed.css"
+      data-data="/demo/assets/c-feed-mixed.json"
+      data-filter="category"
+      data-filtertmpl="/demo/assets/filters.html"
+      data-template="/demo/assets/c-feed.html">
+    </div>
+  </div>
+
+  <div class="slide">
+    <h2>Nouvelles photos</h2>
+    <div id="c-slide" class="component"
+      data-component="cSlide"
+      data-script="/components/c-slide.js"
+      data-css="/demo/assets/c-slide.css"
+      data-data="/demo/assets/c-slide.json"
+      data-filter="category"
+      data-filtertmpl="/demo/assets/filters.html"
+      data-template="/demo/assets/c-slide.html">
+    </div>
+  </div>
+
+  <div class="whoswho">
+    <h2>Derniers connectés</h2>
+    <div id="c-whoswho" class="component"
+      data-component="cWhosWho"
+      data-script="/components/c-whoswho.js"
+      data-css="/demo/assets/c-whoswho.css"
+      data-data="/demo/assets/c-whoswho.json"
+      data-template="/demo/assets/c-whoswho.html">
+    </div>
+  </div>
+
+  <div class="slide">
+    <h2>Derniers notifications</h2>
+    <div id="c-feed-wo-images" class="component"
+      data-component="cFeed"
+      data-script="/components/c-feed.js"
+      data-css="/demo/assets/c-feed.css"
+      data-data="/demo/assets/c-feed-wo-images.json"
+      data-template="/demo/assets/c-feed.html">
+    </div>
+  </div>
+
+  <div class="feed">
+    <h2>Derniers créateur d'horizon</h2>
+    <div id="c-feed" class="component"
+      data-component="cFeed"
+      data-script="/components/c-feed.js"
+      data-css="/demo/assets/c-feed.css"
+      data-data="/demo/assets/c-feed.json"
+      data-template="/demo/assets/c-feed.html">
+    </div>
+  </div>
+
+  <script>
+    var component = new in_Components("#c-alert");
+    var component = new in_Components("#c-feed-filtered");
+    var component = new in_Components("#c-slide");
+    var component = new in_Components("#c-whoswho");
+    var component = new in_Components("#c-feed-wo-images");
+    var component = new in_Components("#c-feed");
+  </script>
+
+</body>
+</html>
