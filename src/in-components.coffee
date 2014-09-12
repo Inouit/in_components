@@ -18,7 +18,8 @@ class in_Components
     @type = @$el.attr('data-component')
 
     for stylesheet in @stylesheets
-      $("head").append $('<link />', href: stylesheet, rel:"stylesheet", type: "text/css")
+      unless $("head").find('link[href="'+stylesheet+'"]').index() >= 0
+        $("head").append $('<link />', href: stylesheet, rel:"stylesheet", type: "text/css")
 
     for script in @scripts
       $.getScript(script)

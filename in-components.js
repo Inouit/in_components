@@ -20,11 +20,13 @@
       _ref = this.stylesheets;
       for (_i = 0, _len = _ref.length; _i < _len; _i++) {
         stylesheet = _ref[_i];
-        $("head").append($('<link />', {
-          href: stylesheet,
-          rel: "stylesheet",
-          type: "text/css"
-        }));
+        if (!($("head").find('link[href="' + stylesheet + '"]').index() >= 0)) {
+          $("head").append($('<link />', {
+            href: stylesheet,
+            rel: "stylesheet",
+            type: "text/css"
+          }));
+        }
       }
       _ref1 = this.scripts;
       for (_j = 0, _len1 = _ref1.length; _j < _len1; _j++) {
