@@ -1,7 +1,7 @@
 module.exports =
   build:
     options:
-      sourceMap: true
+      sourceMap: false
     expand: true
     flatten: true
     cwd: '<%= in8.jsSrc %>'
@@ -11,7 +11,7 @@ module.exports =
 
   components:
     options:
-      sourceMap: true
+      sourceMap: false
     expand: true
     flatten: true
     cwd: '<%= in8.componentsSrc %>'

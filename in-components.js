@@ -10,39 +10,39 @@
       }
       this.$el = $(this.selector);
       this.el = $(this.selector).get(0);
-      if (this.$el.attr('data-script')) {
-        this.scripts = this.$el.attr('data-script').split(',');
-      }
       if (this.$el.attr('data-css')) {
         this.stylesheets = this.$el.attr('data-css').split(',');
-      }
-      this.type = this.$el.attr('data-component');
-      _ref = this.stylesheets;
-      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-        stylesheet = _ref[_i];
-        if (!($("head").find('link[href="' + stylesheet + '"]').index() >= 0)) {
-          $("head").append($('<link />', {
-            href: stylesheet,
-            rel: "stylesheet",
-            type: "text/css"
-          }));
+        _ref = this.stylesheets;
+        for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+          stylesheet = _ref[_i];
+          if (!($("head").find('link[href="' + stylesheet + '"]').index() >= 0)) {
+            $("head").append($('<link />', {
+              href: stylesheet,
+              rel: "stylesheet",
+              type: "text/css"
+            }));
+          }
         }
       }
-      _ref1 = this.scripts;
-      for (_j = 0, _len1 = _ref1.length; _j < _len1; _j++) {
-        script = _ref1[_j];
-        $.getScript(script).done((function(_this) {
-          return function() {
-            if ((typeof in_c !== "undefined" && in_c !== null ? in_c[_this.type] : void 0) != null) {
-              return _this.component = new in_c[_this.type](_this.$el, _this.getOptions());
-            } else {
-              throw new ReferenceError('The component `' + _this.type + '` does not exist, or isn\'t registered in the `in_c` global array');
-            }
-          };
-        })(this)).fail(function(e, name, err) {
-          throw err;
-        });
+      if (this.$el.attr('data-script')) {
+        this.scripts = this.$el.attr('data-script').split(',');
+        _ref1 = this.scripts;
+        for (_j = 0, _len1 = _ref1.length; _j < _len1; _j++) {
+          script = _ref1[_j];
+          $.getScript(script).done((function(_this) {
+            return function() {
+              if ((typeof in_c !== "undefined" && in_c !== null ? in_c[_this.type] : void 0) != null) {
+                return _this.component = new in_c[_this.type](_this.$el, _this.getOptions());
+              } else {
+                throw new ReferenceError('The component `' + _this.type + '` does not exist, or isn\'t registered in the `in_c` global array');
+              }
+            };
+          })(this)).fail(function(e, name, err) {
+            throw err;
+          });
+        }
       }
+      this.type = this.$el.attr('data-component');
       return this;
     }
 

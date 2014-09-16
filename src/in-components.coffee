@@ -9,27 +9,26 @@ class in_Components
     @el = $(@selector).get(0)
 
     # Component's scripts  and styles
-    if @$el.attr('data-script')
-      @scripts = @$el.attr('data-script').split(',')
-
     if @$el.attr('data-css')
       @stylesheets = @$el.attr('data-css').split(',')
+      for stylesheet in @stylesheets
+        unless $("head").find('link[href="'+stylesheet+'"]').index() >= 0
+          $("head").append $('<link />', href: stylesheet, rel:"stylesheet", type: "text/css")
+
+    if @$el.attr('data-script')
+      @scripts = @$el.attr('data-script').split(',')
+      for script in @scripts
+        $.getScript(script)
+          .done =>
+            # Once the component script is loaded it's initialized
+            if in_c?[@type]?
+              @component = new in_c[@type](@$el, @getOptions())
+            else throw new ReferenceError('The component `'+@type+'` does not exist, or isn\'t registered in the `in_c` global array')
+          .fail (e, name, err) ->
+            throw err
 
     @type = @$el.attr('data-component')
 
-    for stylesheet in @stylesheets
-      unless $("head").find('link[href="'+stylesheet+'"]').index() >= 0
-        $("head").append $('<link />', href: stylesheet, rel:"stylesheet", type: "text/css")
-
-    for script in @scripts
-      $.getScript(script)
-        .done =>
-          # Once the component script is loaded it's initialized
-          if in_c?[@type]?
-            @component = new in_c[@type](@$el, @getOptions())
-          else throw new ReferenceError('The component `'+@type+'` does not exist, or isn\'t registered in the `in_c` global array')
-        .fail (e, name, err) ->
-          throw err
     return @
 
   # ## getOptions() parse the attributes of the element and return them as an object
@@ -41,8 +40,6 @@ class in_Components
         @options[@el.attributes[attribute].name.replace('data-','')] = @el.attributes[attribute].value
 
     return @options
-
-
 
 
 if module?.exports
